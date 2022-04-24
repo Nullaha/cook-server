@@ -28,21 +28,22 @@ router.post('/',upload.none(), function(req, res, next) {
                 tools:element.tools,
             })
         });   
+        obj.push({
+            uuid:uuidv4(),
+            name:req.body.name,
+            stuff:req.body.stuff,
+            tools:req.body.tools
+        })
+        fs.writeFile('data/recipes.json',JSON.stringify(obj),(err)=>{
+            if(err){
+                console.log('写入失败');
+            }else{
+                console.log('写入成功');
+            }
+        })
+        res.send('成功了')
       });
-    obj.push({
-        uuid:uuidv4(),
-        name:req.body.name,
-        stuff:req.body.stuff,
-        tools:req.body.tools
-    })
-    fs.writeFile('data/recipes.json',JSON.stringify(obj),(err)=>{
-        if(err){
-            console.log('写入失败');
-        }else{
-            console.log('写入成功');
-        }
-    })
-    res.send('成功了')
+    
 });
 
 module.exports = router;
