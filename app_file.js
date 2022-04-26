@@ -12,7 +12,11 @@ const recipeRouter = require('./routes/recipe')
 const recipeDetailsRouter = require('./routes/details')
 const uploadRecipeRouter = require('./routes/upload')
 const uploadFileRouter = require('./routes/uploadFile')
+const loginRouter = require('./routes/login')
 
+const vertoken = require('./public/token');
+// const expressJWT = require('express-jwt');
+var { expressjwt: jwt } = require("express-jwt");
 
 var app = express();
 var http = require('http');
@@ -43,6 +47,33 @@ app.use('/recipe/details',recipeDetailsRouter)
 
 app.use('/upload',uploadRecipeRouter)
 app.use('/uploadFile',uploadFileRouter)
+app.use('/login',loginRouter)
+
+//token
+app.use(function (req, res, next) {
+  const token = req.headers['authorization'];
+  if (token == undefined) {
+    return next();
+  } else {
+    vertoken.verToken(token).then((data) => {
+      req.data = data;
+      return next();
+    }).catch((error) => {
+      return next();
+    })
+  }
+  next(createError(404));
+})
+
+app.use(jwt({
+  secret: 'mes_qdhd_mobile_xhykjyxgs',
+  algorithms: ["HS256"]
+}).unless({
+  path: ['/login']//除了这个地址，其他的URL都需要验证
+}))
+
+
+
 
 
 
@@ -54,6 +85,9 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
+  if (err.status == 401) {
+    return res.status(401).send('token失效');
+  }
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
@@ -62,4 +96,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-server.listen('3002')
+server.listen('3002',()=>{
+  console.log('aaaa');
+})

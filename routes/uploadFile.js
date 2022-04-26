@@ -1,6 +1,6 @@
-var express = require('express');
-var fs = require('fs')
-var router = express.Router();
+const express = require('express');
+const fs = require('fs')
+const router = express.Router();
 const multer  = require('multer')
 
 const { v4: uuidv4 } = require('uuid');

@@ -16,6 +16,11 @@ POST  /upload
 
 
 
+参考：
+接口加token  https://segmentfault.com/a/1190000039069150
+
+
+
 
 
 
