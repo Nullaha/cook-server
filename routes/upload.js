@@ -1,7 +1,7 @@
-var express = require('express');
+const express = require('express');
 const bodyParser = require('body-parser')
-var fs = require('fs')
-var router = express.Router();
+const fs = require('fs')
+const router = express.Router();
 const multer  = require('multer')
 const upload = multer()
 const { v4: uuidv4 } = require('uuid');

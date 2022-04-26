@@ -20,6 +20,9 @@ POST  /upload
 接口加token  https://segmentfault.com/a/1190000039069150
 
 
++ api接口
+    + 用户模块的接口
+        + 用户表： id account name pwd role  create_time
 
 
 
@@ -27,7 +30,10 @@ POST  /upload
 
 
 
-
+//问题
+1 函数中的promise，我怎么接收返回值
+// Promise 中处理的是异步调用，异步调用是非阻塞式的，在调用的时候并不知道它什么时候结束，也就不会等到他返回一个有效数据之后再进行下一步处理
+// 可以使用 async 和 await来得到我们的返回值
 
 
 

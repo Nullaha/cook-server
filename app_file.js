@@ -1,34 +1,34 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const bodyParser = require('body-parser')
 
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const usersRouter = require('./routes/users');
 const recipeRouter = require('./routes/recipe')
 const recipeDetailsRouter = require('./routes/details')
 const uploadRecipeRouter = require('./routes/upload')
 const uploadFileRouter = require('./routes/uploadFile')
 const loginRouter = require('./routes/login')
+const testRouter = require('./routes/test')
 
 const vertoken = require('./public/token');
 // const expressJWT = require('express-jwt');
-var { expressjwt: jwt } = require("express-jwt");
+const { expressjwt: jwt } = require("express-jwt");
 
-var app = express();
-var http = require('http');
-var server = http.createServer(app);
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
 app.set('data',path.join(__dirname,'data'));
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
-app.use(express.json());
+// app.use(logger('dev'));
+// app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -40,7 +40,7 @@ app.all('*',function(req,res,next){
     next()
 })
 
-app.use('/', indexRouter);
+
 app.use('/users', usersRouter);
 app.use('/recipe',recipeRouter);
 app.use('/recipe/details',recipeDetailsRouter)
@@ -48,6 +48,7 @@ app.use('/recipe/details',recipeDetailsRouter)
 app.use('/upload',uploadRecipeRouter)
 app.use('/uploadFile',uploadFileRouter)
 app.use('/login',loginRouter)
+app.use('/test',testRouter)
 
 //token
 app.use(function (req, res, next) {
@@ -69,7 +70,7 @@ app.use(jwt({
   secret: 'mes_qdhd_mobile_xhykjyxgs',
   algorithms: ["HS256"]
 }).unless({
-  path: ['/login']//除了这个地址，其他的URL都需要验证
+  path: ['/login','/test','recipe']//除了这个地址，其他的URL都需要验证
 }))
 
 
@@ -78,23 +79,23 @@ app.use(jwt({
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// app.use(function(req, res, next) {
+//   next(createError(404));
+// });
 
 // error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  if (err.status == 401) {
-    return res.status(401).send('token失效');
-  }
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+// app.use(function(err, req, res, next) {
+//   // set locals, only providing error in development
+//   if (err.status == 401) {
+//     return res.status(401).send('token失效');
+//   }
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+//   // render the error page
+//   res.status(err.status || 500);
+//   res.render('error');
+// });
 
 server.listen('3002',()=>{
   console.log('aaaa');
