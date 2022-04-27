@@ -1,0 +1,7 @@
+{
+    "name": "test",
+    "title": "test",
+    "description":"test",
+    "url" : "http://localhost:3002",
+    "version": "1.0.0"
+  }

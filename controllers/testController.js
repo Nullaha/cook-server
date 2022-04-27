@@ -1,7 +1,8 @@
 const dbConfig = require('../util/dbconfig')
+
 //获取用户
 getUser=(req,res)=>{
-    const sql ="select * from user"
+  const sql ="select * from user"
   const sqlArr = []
   const callback =(err,data)=>{
     if(err){
@@ -18,5 +19,5 @@ getUser=(req,res)=>{
 }
 
 module.exports = {
-    getUser
+    getUser,
 }

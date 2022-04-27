@@ -1,6 +1,7 @@
 //用于生成和解析token
 const jwt = require('jsonwebtoken')
-const signkey = 'mes_qdhd_mobile_xhykjyxgs';
+// const signkey = 'mes_qdhd_mobile_xhykjyxgs';
+const signkey = 'rootAndShaw';
 // jsonwebtoken是用来生成token给客户端的,express-jwt是用来验证token的。
 
 

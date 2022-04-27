@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage:storage})  //自定义本地保存的路径
 
-/* POST users listing. */      //upload.array('photos', 1)
+/* POST user listing. */      //upload.array('photos', 1)
 router.post('/',upload.single('photo'), function(req, res, next) {
     // 既有文件，又有其他字段
     //文件以uuid命名存储到img文件中，将uuid存到json中。

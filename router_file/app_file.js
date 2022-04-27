@@ -6,15 +6,12 @@ const logger = require('morgan');
 const bodyParser = require('body-parser')
 
 
-const usersRouter = require('./routes/users');
-const recipeRouter = require('./routes/recipe')
-const recipeDetailsRouter = require('./routes/details')
-const uploadRecipeRouter = require('./routes/upload')
-const uploadFileRouter = require('./routes/uploadFile')
-const loginRouter = require('./routes/login')
-const testRouter = require('./routes/test')
+// const loginRouter = require('./routes/login')
+const recipeRouter = require('../routes/recipe')
+const userRouter = require('../routes/user');
+const testRouter = require('../routes/test')
 
-const vertoken = require('./public/token');
+const vertoken = require('../util/token');
 // const expressJWT = require('express-jwt');
 const { expressjwt: jwt } = require("express-jwt");
 
@@ -32,6 +29,8 @@ app.set('data',path.join(__dirname,'data'));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
@@ -41,13 +40,9 @@ app.all('*',function(req,res,next){
 })
 
 
-app.use('/users', usersRouter);
+// app.use('/login',loginRouter)
 app.use('/recipe',recipeRouter);
-app.use('/recipe/details',recipeDetailsRouter)
-
-app.use('/upload',uploadRecipeRouter)
-app.use('/uploadFile',uploadFileRouter)
-app.use('/login',loginRouter)
+app.use('/user', userRouter);
 app.use('/test',testRouter)
 
 //token

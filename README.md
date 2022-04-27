@@ -5,20 +5,29 @@ views：后端模版文件。
 app.js：入口文件。
 package.json：工程信息和模块依赖。
 
-                         GET参数                            POST参数
-GET   /recipe           无
-GET   /details          id
-POST  /uploadFile                                          uuid file
-POST  /upload                                               
+
+                             GET参数           POST参数
+✅GET   /recipe                  无
+✅GET   /recipe/details          id
+❌POST  /recipe/uploadFile                      uuid file
+
+✅POST  /user/login                                account pwd
+❌POST  /user/exit                                 account pwd
+❌POST  /user/forgetPwd                            account pwd
+❌POST  /user/changePwd                            account oldPwd newPwd
+❌GET   /user/getInfo           
+❌POST   /user/updateInfo           
 
 
 
 
 
 
-参考：
-接口加token  https://segmentfault.com/a/1190000039069150
 
++ 参考：
+    + 接口加token  https://segmentfault.com/a/1190000039069150
+    + 接口文档     https://apidocjs.com/#param-api-param-example
+                  https://www.showdoc.com.cn/petSystem/2087346087442875
 
 + api接口
     + 用户模块的接口
@@ -30,8 +39,8 @@ POST  /upload
 
 
 
-//问题
-1 函数中的promise，我怎么接收返回值
++ 问题
+    1. 函数中的promise，我怎么接收返回值
 // Promise 中处理的是异步调用，异步调用是非阻塞式的，在调用的时候并不知道它什么时候结束，也就不会等到他返回一个有效数据之后再进行下一步处理
 // 可以使用 async 和 await来得到我们的返回值
 
