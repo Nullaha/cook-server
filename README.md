@@ -26,8 +26,13 @@ package.json：工程信息和模块依赖。
 
 + 参考：
     + 接口加token  https://segmentfault.com/a/1190000039069150
+                    https://juejin.cn/post/6844903941851840519
     + 接口文档     https://apidocjs.com/#param-api-param-example
                   https://www.showdoc.com.cn/petSystem/2087346087442875
+
+    + 连mysql     https://gitee.com/min_hacker/learn/blob/master/controllers/follow_controller.js
+    + node全栈    https://juejin.cn/post/6894065644933906445
+                    https://juejin.cn/post/6888577960409268232
 
 + api接口
     + 用户模块的接口
