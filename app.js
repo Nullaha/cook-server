@@ -61,12 +61,13 @@ app.use(function (req, res, next) {
   next(createError(404));
 })
 
-app.use(jwt({
-  secret: 'rootandshaw',
-  algorithms: ["HS256"]
-}).unless({
-  path: ['/login','/test','recipe','apidoc']//除了这个地址，其他的URL都需要验证
-}))
+//使用token
+// app.use(jwt({
+//   secret: 'rootandshaw',
+//   algorithms: ["HS256"]
+// }).unless({
+//   path: ['/login','/test','recipe','apidoc']//除了这个地址，其他的URL都需要验证
+// }))
 
 
 

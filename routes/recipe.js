@@ -14,7 +14,7 @@ const Recipe = require('../controllers/recipeController')
  * {
  *     "success" : true,
  *      "msg":"成功",
- *      "token":data
+ *      "content":data
  * }
 */
 router.get('/',Recipe.getAllRecipes);
@@ -28,7 +28,7 @@ router.get('/',Recipe.getAllRecipes);
  * {
  *     "success" : true,
  *      "msg":"登成功",
- *      "token":data
+ *      "content":data
  * }
  */
 router.get('/details', Recipe.getRecipeDetails);

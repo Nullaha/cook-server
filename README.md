@@ -33,10 +33,16 @@ package.json：工程信息和模块依赖。
     + 连mysql     https://gitee.com/min_hacker/learn/blob/master/controllers/follow_controller.js
     + node全栈    https://juejin.cn/post/6894065644933906445
                     https://juejin.cn/post/6888577960409268232
+    + mysql
+        + 多对多  https://www.modb.pro/db/324117
+        + array https://zditect.com/main-advanced/database/json_arrayagg-create-a-json-array-from-the-row
 
 + api接口
     + 用户模块的接口
         + 用户表： id account name pwd role  create_time
+    + 菜
+        +菜谱表：id uuid name tools method photo account? author?
+        +食材表：id name
 
 
 

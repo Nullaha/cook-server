@@ -36,7 +36,7 @@ router.get('/getInfo',User.getUserInfo)
  * {
  *     "success" : true,
  *      "msg":"登录成功",
- *      "token":data
+ *      "content":data
  * }
  */
 router.post('/login',upload.none(), User.login);
