@@ -21,11 +21,11 @@ router.get('/getInfo',User.getUserInfo)
 
 
 /**
- * @api {get} /user/updateInfo 修改用户信息
+ * @api {post} /user/updateInfo 修改用户信息
  * @apiDescription 修改用户信息
  * @apiBody  {String} data data
  */
- router.get('/updateInfo',User.updateInfo)
+ router.post('/updateInfo',User.updateInfo)
 
 /**
  * @api {post} /user/login 登录
@@ -36,6 +36,7 @@ router.get('/getInfo',User.getUserInfo)
  * {
  *     "success" : true,
  *      "msg":"登录成功",
+ *      "token":token,
  *      "content":data
  * }
  */
@@ -43,8 +44,8 @@ router.post('/login',upload.none(), User.login);
 
 
 /**
- * @api {post} /user/exit 登出
- * @apiDescription 登出
+ * @api {post} /user/exit 退出
+ * @apiDescription 退出
  * @apiSuccessExample {json} Success-Response:
  * {
  *     "success" : true,
