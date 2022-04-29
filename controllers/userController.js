@@ -62,6 +62,10 @@ login= (req,res)=>{
 }
 //退出
 exit =(req,res)=>{
+    res.send({
+        success : true,
+        msg:"退出登陆成功"
+    })
 
 }
 //忘记密码
